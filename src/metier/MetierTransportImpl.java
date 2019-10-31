@@ -18,6 +18,7 @@ public class MetierTransportImpl implements ITansportMetier {
 
 	public void setDao(ITransportDao dao) {
 		this.dao = dao;
+		System.out.println("Injection DAO");
 	}
 
 	@Override
@@ -58,6 +59,10 @@ public class MetierTransportImpl implements ITansportMetier {
 	public void suprimerMarchandise(Long num) {
 		// TODO Auto-generated method stub
 		dao.suprimerMarchandise(num);
+	}
+	
+	public void init() {
+		System.out.println("initialisation métier");
 	}
 
 }
