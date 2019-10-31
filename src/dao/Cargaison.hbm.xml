@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30 oct. 2019 11:33:31 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="dao.Cargaison" table="CARGAISON">
+    	<id name="reference" column="REF_CARG"></id>
+    	<discriminator column="TYPE_CARG" type="string" length="2"></discriminator>
+    	<property name="dateLivraison"></property>
+    	<property name="distance"></property>
+    	<set name="marchandises" lazy="true" inverse="true"><!-- association bidirectionnelle inverse = true  -->
+    		<key column="REF_CARG"></key>
+    		<one-to-many class="dao.Marchandise"/>
+    	</set>
+    	<subclass name="dao.CargaisonAerienne" discriminator-value="CA">
+    		<property name="poidsMax"></property>
+    	</subclass>
+    	<subclass name="dao.CargaisonRoutiere" discriminator-value="CR">
+    		<property name="temperature"></property>
+    	</subclass>
+    </class>
+</hibernate-mapping>
