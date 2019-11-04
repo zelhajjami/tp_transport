@@ -53,8 +53,8 @@ public class TransportDaoImpl implements ITransportDao{
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 
-		Query req = session.createQuery("select m from Marchandise m where m.nom like:x");
-		req.setParameter("x", mc);
+		Query req = session.createQuery("select m from Marchandise m where m.nom like :x");
+		req.setParameter("x", "%"+mc+"%");
 		return req.list();
 	}
 
