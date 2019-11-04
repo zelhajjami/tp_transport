@@ -14,14 +14,23 @@ public class TransportController {
 	private ITansportMetier metier;
 	
 	@RequestMapping(value = "/index") //method = "get"
-	public String index() {
+	public String index(Model model) {
+		model.addAttribute("cargaisons", metier.getAllCargaison());
 		return "Transport";
 	}
 	
-	@RequestMapping(value = "/chercher") //method = "get"
-	public String chercher(@RequestParam(value = "moCle") String mc, Model model) {
+	@RequestMapping(value = "/chercher")
+	public String chercher(@RequestParam(value = "motCle") String mc, Model model) {
 		model.addAttribute("mc", mc);
 		model.addAttribute("marchandises", metier.getMarchandiseParMc(mc));
+		return "Transport";
+	}
+	
+	@RequestMapping(value = "/marchandisesParCarg")
+	public String marchandises(@RequestParam(value = "refCarg") String ref, Model model) {
+		model.addAttribute("refCarg", ref);
+		model.addAttribute("marchandises", metier.getMarchandise(ref));
+		model.addAttribute("cargaisons", metier.getAllCargaison());
 		return "Transport";
 	}
 }

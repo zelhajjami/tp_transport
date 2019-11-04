@@ -3,7 +3,7 @@ package dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 
 import util.HibernateUtil;
@@ -33,9 +33,11 @@ public class TransportDaoImpl implements ITransportDao{
 	public List<Cargaison> getAllCargaison() {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-
-		Query req = session.createQuery("select c from Cargaison c");
-		return req.list();
+		
+		/*Query req = session.createQuery("select c from Cargaison c");
+		return req.list();*/
+		
+		return session.createQuery("SELECT c FROM Cargaison c", Cargaison.class).getResultList();
 	}
 
 	@Override
