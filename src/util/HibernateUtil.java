@@ -1,7 +1,9 @@
 package util;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.SessionFactoryBuilder;
 import org.hibernate.boot.Metadata;
@@ -24,6 +26,7 @@ public class HibernateUtil {
         return sessionFactory;
     }
 
+    
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             sessionFactory = buildSessionFactory();

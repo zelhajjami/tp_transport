@@ -23,6 +23,7 @@ public class TransportController {
 	public String chercher(@RequestParam(value = "motCle") String mc, Model model) {
 		model.addAttribute("mc", mc);
 		model.addAttribute("marchandises", metier.getMarchandiseParMc(mc));
+		model.addAttribute("cargaisons", metier.getAllCargaison());
 		return "Transport";
 	}
 	

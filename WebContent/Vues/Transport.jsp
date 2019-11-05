@@ -14,9 +14,10 @@
 	</form>
 	<form action="marchandisesParCarg.do" method="get">
 		Marchandises:
-		<select name="refCarg">
+		<select name="refCarg" >
 			<c:forEach items="${cargaisons}" var="c">
-				<option value="${c.reference}">
+				<option value="${c.reference}" 
+					<c:if test="${c.reference == refCarg}">selected="selected"</c:if> >
 				${c.reference}
 				</option>
 			</c:forEach>
@@ -27,7 +28,7 @@
 		<tr>
 			<th>Num</th><th>Nom</th><th>Poids</th><th>Vol</th><th>Cargaison</th>
 		</tr>
-		<c:forEach items="${marchandises }" var="m">
+		<c:forEach items="${marchandises}" var="m">
 			<tr>
 				<td>${m.numero}</td>
 				<td>${m.nom}</td>
