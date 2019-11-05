@@ -28,6 +28,31 @@
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 	
+	<security-constraint>
+		<web-resource-collection>
+			<!-- sécurisation du controlleur -->
+			<web-resource-name>action</web-resource-name>
+			<url-pattern>*.do</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		
+		<auth-constraint>
+			<role-name>manager</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<!--<login-config>
+		<auth-method>BASIC</auth-method>
+		<realm-name>Authentification</realm-name>
+	</login-config> -->
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/login.html</form-login-page>
+			<form-error-page>/login.html</form-error-page>
+		</form-login-config>
+	</login-config>
+	
 	<welcome-file-list>  
 		<welcome-file>index.do</welcome-file>  
 	</welcome-file-list>  
