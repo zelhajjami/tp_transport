@@ -35,6 +35,7 @@
 				<td>${m.poids}</td>
 				<td>${m.volume}</td>
 				<td>${m.cargaison.reference}</td>
+				<td> <a href="deleteMarch.do?num=${m.numero}">Supprimer</a></td>
 			</tr>
 		</c:forEach>
 	</table>
